@@ -1,3 +1,8 @@
+# Assignment2:WebLinkAndPhoneCallApp
+
+<b>Learning Objective</b>: the goal of the assignment is to apply implicit intent concepts and invoke web link & phone calls.
+
+
 # Main Activity:
 <img width="331" alt="image" src="https://github.com/avidhi2100/CMPE-277-Assignments/assets/143249088/2cbca109-6e38-40d5-8c7d-a62a089edd22">
 
