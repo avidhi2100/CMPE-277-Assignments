@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
             Uri imageUri = data.getData();
 
             try {
-                // Get bitmap from selected image
                 InputStream inputStream = getContentResolver().openInputStream(imageUri);
                 Bitmap selectedImageBitmap = BitmapFactory.decodeStream(inputStream);
                 selectedImageView.setImageBitmap(selectedImageBitmap);
@@ -87,27 +86,21 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(Bitmap... bitmaps) {
             Bitmap imageBitmap = bitmaps[0];
             try {
-                // Convert bitmap to byte array
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
                 byte[] imageBytes = outputStream.toByteArray();
 
-                // Set up AWS credentials
                 String accessKeyId = "";
                 String secretAccessKey = "";
                 AWSCredentials awsCredentials = new BasicAWSCredentials(accessKeyId, secretAccessKey);
 
-                // Create an AmazonTextractClient
                 AmazonTextractClient textractClient = new AmazonTextractClient(awsCredentials);
 
-                // Create Document object for AWS Textract
                 Document document = new Document().withBytes(ByteBuffer.wrap(imageBytes));
 
-                // Perform text detection
                 DetectDocumentTextRequest request = new DetectDocumentTextRequest().withDocument(document);
                 DetectDocumentTextResult result = textractClient.detectDocumentText(request);
 
-                // Process the result
                 StringBuilder stringBuilder = new StringBuilder();
                 List<Block> blocks = result.getBlocks();
                 for (Block block : blocks) {
@@ -125,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            // Update UI with OCR result
             ocrResultTextView.setText(result);
         }
     }
