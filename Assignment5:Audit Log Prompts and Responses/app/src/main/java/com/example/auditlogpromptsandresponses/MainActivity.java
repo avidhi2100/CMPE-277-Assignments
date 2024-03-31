@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             String prompt = params[0];
-            String apiKey = "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";
+            String apiKey = "";
             String apiUrl = "https://api.openai.com/v1/completions";
             String model = "gpt-3.5-turbo-instruct";
 
